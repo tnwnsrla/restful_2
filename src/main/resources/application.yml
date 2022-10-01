@@ -16,16 +16,20 @@ spring:
     user:
       name: username
       password: passw0rd
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    ##generate-ddl: true
+  h2:
+    console:
+      enabled: true
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-jpa:
-  show-sql:true
-
-h2:
-  console:
-    enabled:true
