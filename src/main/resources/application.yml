@@ -22,3 +22,10 @@ management:
     web:
       exposure:
         include: "*"
+
+jpa:
+  show-sql:true
+
+h2:
+  console:
+    enabled:true
