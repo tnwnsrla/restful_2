@@ -9,13 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -41,4 +39,15 @@ public class User {
     private String password;
     @ApiModelProperty(notes = "사용자 주민번호를 입력해주세요")
     private String ssn;
+
+    @OneToMany(mappedBy = "user") // user 입장에서는 post 라는 객체를 1:다 로 가져오면 된다.
+    private List<Post> posts;
+
+    public User(Integer id, String name, Date joinDate, String password, String ssn) {
+        this.id = id;
+        this.name = name;
+        this.joinDate = joinDate;
+        this.password = password;
+        this.ssn = ssn;
+    }
 }
